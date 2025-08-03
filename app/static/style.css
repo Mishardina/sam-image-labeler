@@ -1,0 +1,59 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f9;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.main-container {
+    display: flex;
+    gap: 20px;
+}
+
+.controls {
+    width: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.controls input, .controls button, .controls select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.canvas-container {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    overflow: auto;
+    max-height: 90vh;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    cursor: crosshair;
+}
+
+#masks-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#masks-list li {
+    background-color: #e9e9e9;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}

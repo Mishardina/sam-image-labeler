@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструмент разметки SAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <h1>Инструмент разметки изображений (SAM)</h1>
+    <div class="main-container">
+        <div class="controls">
+            <h2>Управление</h2>
+            <p>Загрузите изображение для начала работы.</p>
+            <input type="file" id="image-loader" accept="image/*">
+            <hr>
+            <h3>Инструменты</h3>
+            <p>ЛКМ - положительная точка. <br> ПКМ - отрицательная точка.</p>
+            <div class="class-selector">
+                <label for="class-select">Выбрать класс:</label>
+                <select id="class-select">
+                    <option value="car">Машина</option>
+                    <option value="person">Человек</option>
+                    <option value="road">Дорога</option>
+                </select>
+            </div>
+            <button id="predict-button" disabled>Сделать маску</button>
+            <button id="clear-points-button" disabled>Очистить точки</button>
+            <hr>
+            <h3>Маски</h3>
+            <div id="masks-list">
+                <p>Здесь будут ваши маски.</p>
+            </div>
+             <button id="save-mask-button" disabled>Сохранить маску</button>
+        </div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>
