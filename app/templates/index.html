@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="appTitle">Инструмент разметки SAM</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="header-container">
+        <h1 data-i18n="appTitle"></h1>
+        <div id="lang-switcher">
+            <button data-lang="ru" class="active">RU</button>
+            <button data-lang="en">EN</button>
+        </div>
+    </div>
+    <div class="page-container">
+        <div id="image-list-panel">
+            <h2 data-i18n="uploadedImagesTitle"></h2>
+            <div id="image-thumbnail-list">
+                <p data-i18n="uploadPrompt"></p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="canvas-container">
+                <canvas id="canvas"></canvas>
+                <div id="canvas-placeholder">
+                    <p data-i18n="selectImagePrompt"></p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h2 data-i18n="controlsTitle"></h2>
+                <div class="control-section">
+                    <label for="image-loader" class="file-upload-label" data-i18n="uploadButton"></label>
+                    <input type="file" id="image-loader" accept="image/*" multiple>
+                    <button id="export-button" data-i18n="exportButton" disabled></button>
+                </div>
+                <hr>
+
+                <div class="control-section">
+                    <h3 data-i18n="toolsTitle"></h3>
+                    <p data-i18n="toolsHelp"></p>
+                    <button id="clear-points-button" data-i18n="clearMarkupButton" disabled></button>
+                </div>
+                <hr>
+
+                <div class="control-section">
+                    <h3 data-i18n="classManagementTitle"></h3>
+                    <div class="class-management">
+                        <input type="text" id="new-class-input" data-i18n-placeholder="classNamePlaceholder">
+                        <div class="class-color-picker">
+                            <label for="new-class-color" data-i18n="classColorLabel"></label>
+                            <input type="color" id="new-class-color" value="#FF0000">
+                        </div>
+                        <button id="add-class-button" data-i18n="addClassButton"></button>
+                    </div>
+                    <div id="class-list-container">
+                        <p data-i18n="addClassesPrompt"></p>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="control-section">
+                    <button id="save-mask-button" data-i18n="saveMaskButton" disabled></button>
+                    <h3 data-i18n="annotatedMasksTitle"></h3>
+                    <div id="masks-list-container">
+                        <p data-i18n="noMasksPrompt"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>
