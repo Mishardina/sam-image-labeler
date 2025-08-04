@@ -22,8 +22,8 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model = SamModel.from_pretrained("facebook/sam-vit-huge").to(device)
-processor = SamProcessor.from_pretrained("facebook/sam-vit-huge")
+model = SamModel.from_pretrained("facebook/sam-vit-base").to(device)
+processor = SamProcessor.from_pretrained("facebook/sam-vit-base")
 
 
 class Point(BaseModel):
