@@ -124,8 +124,8 @@ Select an image from the left panel. Click on the image to place points:
 
 The mask will update automatically after each click. Add more points to refine the mask until it accurately covers the object.
 
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](readme_images/image.png)
+![alt text](readme_images/image-1.png)
 
 ### 3\. Save the Mask and Export
 
