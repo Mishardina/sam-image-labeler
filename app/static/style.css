@@ -1,31 +1,143 @@
 body {
     font-family: sans-serif;
-    margin: 20px;
+    margin: 0;
     background-color: #f4f4f9;
-}
-
-h1, h2, h3 {
     color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.main-container {
+/* Изменения здесь */
+.header-container {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 15px 0;
+}
+
+#lang-switcher button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+#lang-switcher button.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+/* Конец изменений */
+
+.page-container {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#image-list-panel {
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#image-thumbnail-list .thumbnail {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    position: relative;
+}
+
+#image-thumbnail-list .thumbnail img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+#image-thumbnail-list .thumbnail.active {
+    border-color: #4CAF50;
+}
+
+#image-thumbnail-list .thumbnail .mask-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+.canvas-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: auto;
+    background-color: #e9e9e9;
+    position: relative;
+}
+
+#canvas-placeholder {
+    color: #888;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .controls {
-    width: 300px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    width: 350px;
+    padding: 20px;
     background-color: #fff;
+    border-left: 1px solid #ddd;
+    overflow-y: auto;
 }
 
-.controls input, .controls button, .controls select {
+.control-section {
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.controls button, .controls input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-top: 10px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 .controls button:disabled {
@@ -33,27 +145,93 @@ h1, h2, h3 {
     cursor: not-allowed;
 }
 
-.canvas-container {
-    flex-grow: 1;
-    border: 1px solid #ccc;
-    overflow: auto;
-    max-height: 90vh;
-}
-
-canvas {
+.file-upload-label {
     display: block;
-    max-width: 100%;
-    cursor: crosshair;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+input[type="file"] {
+    display: none;
 }
 
-#masks-list ul {
+.class-management {
+    display: flex;
+    flex-direction: column;
+}
+
+.class-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.class-color-picker label {
+    flex-shrink: 0;
+}
+
+.class-color-picker input[type="color"] {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Список масок в панели управления */
+#masks-list-container ul {
     list-style-type: none;
     padding: 0;
 }
 
-#masks-list li {
+#masks-list-container li {
+    display: flex;
+    align-items: center;
     background-color: #e9e9e9;
     padding: 8px;
     border-radius: 4px;
     margin-bottom: 5px;
+    cursor: pointer;
+    border: 2px solid transparent; /* Добавляем рамку для плавности */
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* НОВЫЙ СТИЛЬ: для выделенной маски в списке */
+#masks-list-container li.highlighted-mask {
+    background-color: #d1e7dd; /* Светло-зеленый фон */
+    border-color: #4CAF50; /* Зеленая рамка */
+}
+
+.class-list li {
+    display: flex;
+    align-items: center;
+    background-color: #e9e9e9;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.class-list li:hover {
+    background-color: #dcdcdc;
+}
+
+.class-list li.active {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.class-list .color-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #888;
 }
