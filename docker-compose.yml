@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: sam_labeler_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - huggingface_cache_data:/root/.cache/huggingface
+    restart: unless-stopped
+
+volumes:
+  huggingface_cache_data: {}
