@@ -1,4 +1,4 @@
-# SAM Annotation Tool
+# SAM Image Labeler
 
 A web-based, semi-automatic image annotation tool for segmentation tasks, powered by the Segment Anything Model (SAM) from Meta AI. This application allows users to interactively create precise segmentation masks by placing positive and negative points on an image. It is designed to streamline the process of creating datasets for computer vision models.
 
